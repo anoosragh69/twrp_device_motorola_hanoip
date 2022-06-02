@@ -36,16 +36,13 @@ AB_OTA_PARTITIONS += \
 PRODUCT_PACKAGES += \
     otapreopt_script \
     update_engine \
+    update_engine_sideload \
     update_verifier
 
 PRODUCT_PACKAGES += \
     e2fsck_ramdisk \
     tune2fs_ramdisk \
     resize2fs_ramdisk
-
-PRODUCT_PACKAGES += \
-    bootctrl.$(PRODUCT_PLATFORM) \
-    update_engine_sideload
 
 AB_OTA_POSTINSTALL_CONFIG += \
     RUN_POSTINSTALL_system=true \
@@ -62,9 +59,7 @@ TARGET_ENFORCE_AB_OTA_PARTITION_LIST := true
 PRODUCT_PACKAGES += \
     android.hardware.boot@1.1-impl-qti \
     android.hardware.boot@1.1-impl-qti.recovery \
-    android.hardware.boot@1.1-service \
-    bootctrl.$(PRODUCT_PLATFORM) \
-    bootctrl.$(PRODUCT_PLATFORM).recovery
+    android.hardware.boot@1.1-service
 
 # Enable virtual A/B OTA
 $(call inherit-product, $(SRC_TARGET_DIR)/product/virtual_ab_ota/launch_with_vendor_ramdisk.mk)
