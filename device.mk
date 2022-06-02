@@ -87,7 +87,7 @@ PRODUCT_SOONG_NAMESPACES += \
     vendor/qcom/opensource/commonsys-intf/display
 
 # Prebuilt headers
-PRODUCT_VENDOR_KERNEL_HEADERS := kernel/motorola/kernel-headers
+PRODUCT_VENDOR_KERNEL_HEADERS := $(DEVICE_PATH)/kernel-headers
 
 # Blacklist
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST += \
