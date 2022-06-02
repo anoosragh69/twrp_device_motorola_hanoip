@@ -91,6 +91,9 @@ PRODUCT_SOONG_NAMESPACES += \
     $(LOCAL_PATH) \
     vendor/qcom/opensource/commonsys-intf/display
 
+# Prebuilt headers
+PRODUCT_VENDOR_KERNEL_HEADERS := kernel/motorola/kernel-headers
+
 # Blacklist
 PRODUCT_SYSTEM_PROPERTY_BLACKLIST += \
     ro.bootimage.build.date.utc \
