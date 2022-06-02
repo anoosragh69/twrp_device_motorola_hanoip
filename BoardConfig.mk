@@ -240,3 +240,7 @@ endif
 
 # VINTF
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
+
+# Dimensions
+TW_Y_OFFSET := 115
+TW_H_OFFSET := -115
