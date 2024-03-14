@@ -123,6 +123,10 @@ TARGET_RECOVERY_DEVICE_MODULES += \
     libpcrecpp \
     libxml2
 
+# Kernel module loading for touch, battery etc
+TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/recovery/root/vendor/lib/modules)\")
+TW_LOAD_VENDOR_BOOT_MODULES := true
+
 # Use mke2fs to create ext4 images
 TARGET_USES_MKE2FS := true
 
