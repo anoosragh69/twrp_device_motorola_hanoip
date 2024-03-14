@@ -15,16 +15,16 @@
 #
 
 # Release name
-PRODUCT_RELEASE_NAME := liber
+PRODUCT_RELEASE_NAME := hanoip
 
 # Inherit from our custom product configuration
 $(call inherit-product, vendor/twrp/config/common.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := liber
+PRODUCT_DEVICE := hanoip
 PRODUCT_NAME := twrp_$(PRODUCT_DEVICE)
 PRODUCT_BRAND := motorola
-PRODUCT_MODEL := motorola one fusion+
+PRODUCT_MODEL := moto g(40/60)
 PRODUCT_MANUFACTURER := motorola
 
 # Inherit from hardware-specific part of the product configuration

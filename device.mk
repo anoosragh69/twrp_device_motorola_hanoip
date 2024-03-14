@@ -24,11 +24,12 @@ AB_OTA_PARTITIONS += \
     boot \
     dtbo \
     product \
-    recovery \
     system \
     system_ext \
     vendor \
-    vbmeta
+    vendor_boot \
+    vbmeta \
+    vbmeta_system
 
 PRODUCT_PACKAGES += \
     otapreopt_script \
