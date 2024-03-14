@@ -156,6 +156,10 @@ TARGET_NO_RECOVERY := true
 BOARD_USES_RECOVERY_AS_BOOT := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 
+# Kernel module loading for touch, battery etc
+TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/recovery/root/vendor/lib/modules)\")
+TW_LOAD_VENDOR_BOOT_MODULES := true
+
 # TWRP specific build flags
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TARGET_VENDOR_PROP += $(DEVICE_PATH)/vendor.prop
