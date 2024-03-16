@@ -30,9 +30,6 @@ import /init.recovery.qcom_decrypt.rc
 on boot
     start health-hal-2-1
 
-on early-init
-    start fstab_fixup
-
 on fs
     wait /dev/block/platform/soc/${ro.boot.bootdevice}
     symlink /dev/block/platform/soc/${ro.boot.bootdevice} /dev/block/bootdevice
@@ -45,10 +42,3 @@ on post-fs
 on property:ro.crypto.type=file
     setprop ro.crypto.state encrypted
     setprop twrp.apex.loaded true
-
-service fstab_fixup /system/bin/fstab_fixup.sh
-    oneshot
-    disabled
-    user root
-    group root
-    seclabel u:r:recovery:s0
