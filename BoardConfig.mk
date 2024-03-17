@@ -65,22 +65,19 @@ BOARD_PROVIDES_GPTUTILS := true
 
 # Kernel
 BOARD_KERNEL_CMDLINE := \
-    console=ttyMSM0,115200,n8 \
+    console=ttyMSM0,115200n8 \
     androidboot.hardware=qcom \
     androidboot.console=ttyMSM0 \
     androidboot.memcg=1 \
     lpm_levels.sleep_disabled=1 \
-    video=vfb:640x400,bpp=32,memsize=3072000 \
     msm_rtb.filter=0x237 \
     service_locator.enable=1 \
-    androidboot.usbcontroller=a600000.dwc3 \
     swiotlb=1 \
+    androidboot.usbcontroller=a600000.dwc3 \
+    earlycon=msm_geni_serial,0x880000 \
     loop.max_part=7 \
-    cgroup.memory=nokmem,nosocket \
-    earlycon=msm_geni_serial,0x4a90000 \
     printk.devkmsg=on \
-    androidboot.boot_devices=soc/1d84000.ufshc \
-    firmware_class.path=/vendor/firmware_mnt/image
+    firmware_class.path=/vendor/firmware_mnt/image 
 # For the love of all that is holy, please do not include this in your ROM unless you really want TWRP to not work correctly!
 BOARD_KERNEL_CMDLINE += androidboot.fastboot=1
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
@@ -137,6 +134,7 @@ BOARD_MOTOROLA_DYNAMIC_PARTITIONS_PARTITION_LIST := product system system_ext ve
 BOARD_HAS_NO_SELECT_BUTTON := true
 BOARD_HAS_LARGE_FILESYSTEM := true
 BOARD_INCLUDE_RECOVERY_DTBO := true
+BOARD_INCLUDE_DTB_IN_BOOTIMG := true
 TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
