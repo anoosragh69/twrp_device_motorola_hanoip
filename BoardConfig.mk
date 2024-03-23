@@ -212,11 +212,6 @@ RECOVERY_BINARY_SOURCE_FILES += $(TARGET_OUT_EXECUTABLES)/strace
 #
 # For local builds only
 #
-# TWRP zip installer
-ifneq ($(wildcard bootable/recovery/installer/.),)
-    USE_RECOVERY_INSTALLER := true
-    RECOVERY_INSTALLER_PATH := bootable/recovery/installer
-endif
 
 # Custom TWRP Versioning
 ifneq ($(wildcard device/common/version-info/.),)
