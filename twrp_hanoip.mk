@@ -29,8 +29,3 @@ PRODUCT_MANUFACTURER := motorola
 
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, device/$(PRODUCT_BRAND)/$(PRODUCT_DEVICE)/device.mk)
-
-PRODUCT_PACKAGES += \
-    linker.vendor_ramdisk \
-    e2fsck.vendor_ramdisk \
-    fsck.f2fs.vendor_ramdisk \
