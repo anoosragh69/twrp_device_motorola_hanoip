@@ -65,22 +65,20 @@ BOARD_PROVIDES_GPTUTILS := true
 
 # Kernel
 BOARD_KERNEL_CMDLINE := \
-    console=ttyMSM0,115200,n8 \
+    console=ttyMSM0,115200n8 \
     androidboot.hardware=qcom \
     androidboot.console=ttyMSM0 \
     androidboot.memcg=1 \
     lpm_levels.sleep_disabled=1 \
-    video=vfb:640x400,bpp=32,memsize=3072000 \
     msm_rtb.filter=0x237 \
     service_locator.enable=1 \
-    androidboot.usbcontroller=a600000.dwc3 \
     swiotlb=1 \
+    androidboot.usbcontroller=a600000.dwc3 \
+    earlycon=msm_geni_serial,0x880000 \
     loop.max_part=7 \
-    cgroup.memory=nokmem,nosocket \
-    earlycon=msm_geni_serial,0x4a90000 \
     printk.devkmsg=on \
-    androidboot.boot_devices=soc/1d84000.ufshc \
     firmware_class.path=/vendor/firmware_mnt/image
+
 # For the love of all that is holy, please do not include this in your ROM unless you really want TWRP to not work correctly!
 BOARD_KERNEL_CMDLINE += androidboot.fastboot=1
 BOARD_KERNEL_CMDLINE += androidboot.selinux=permissive
@@ -94,6 +92,7 @@ BOARD_KERNEL_SECOND_OFFSET := 0x00f00000
 BOARD_KERNEL_TAGS_OFFSET   := 0x00000100
 BOARD_DTB_OFFSET           := 0x01f00000
 
+BOARD_RAMDISK_USE_LZ4 := true
 BOARD_KERNEL_IMAGE_NAME := Image
 TARGET_PREBUILT_DTB := $(DEVICE_PATH)/prebuilt/dtb
 TARGET_PREBUILT_KERNEL := $(DEVICE_PATH)/prebuilt/$(BOARD_KERNEL_IMAGE_NAME)
@@ -114,7 +113,7 @@ BOARD_MKBOOTIMG_ARGS += --header_version $(BOARD_BOOT_HEADER_VERSION)
 BOARD_MKBOOTIMG_ARGS += --dtb $(TARGET_PREBUILT_DTB)
 
 # Partitions
-BOARD_BOOTIMAGE_PARTITION_SIZE := 67108864
+BOARD_BOOTIMAGE_PARTITION_SIZE := 74711040
 BOARD_DTBOIMG_PARTITION_SIZE := 8388608
 BOARD_VENDOR_BOOTIMAGE_PARTITION_SIZE := 67108864
 BOARD_FLASH_BLOCK_SIZE := 262144 # (BOARD_KERNEL_PAGESIZE * 64)
@@ -153,11 +152,7 @@ TARGET_USES_MKE2FS := true
 # A/B device flags
 TARGET_NO_KERNEL := false
 TARGET_NO_RECOVERY := true
-BOARD_USES_GENERIC_KERNEL_IMAGE := true
-BOARD_MOVE_RECOVERY_RESOURCES_TO_VENDOR_BOOT := true
-BOARD_USES_RECOVERY_AS_BOOT :=      # set as empty
-BOARD_EXCLUDE_KERNEL_FROM_RECOVERY_IMAGE := true
-BOARD_MOVE_GSI_AVB_KEYS_TO_VENDOR_BOOT := true
+BOARD_USES_RECOVERY_AS_BOOT := true
 
 # Kernel module loading for touch, battery etc
 TW_LOAD_VENDOR_MODULES := $(shell echo \"$(shell ls $(DEVICE_PATH)/recovery/root/vendor/lib/modules)\")
@@ -240,6 +235,9 @@ endif
 
 # VINTF
 PRODUCT_ENFORCE_VINTF_MANIFEST := true
+
+# RAMDISK
+BOARD_RAMDISK_USE_LZMA := true
 
 # Dimensions
 TW_Y_OFFSET := 115
